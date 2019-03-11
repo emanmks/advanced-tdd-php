@@ -1,0 +1,12 @@
+{
+    "name": "eman/name-inverter",
+    "description": "Invert first name to last name and vice-versa",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Solaiman Mansyur",
+            "email": "solaiman.mansyur@gmail.com"
+        }
+    ],
+    "require": {}
+}
