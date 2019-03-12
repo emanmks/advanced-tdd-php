@@ -31,6 +31,11 @@ class NameInverterTest extends TestCase
 
     public function testGivenOneWordNameReturnOneWordName(): void
     {
-        $this->assertEquals("Fulan", $this->inverter->invert("Fulan"));
+        $this->assertEquals("Name", $this->inverter->invert("Name"));
+    }
+
+    public function testGivenFirstLastReturnLastFirst(): void
+    {
+        $this->assertEquals("Last, First", $this->inverter->invert("First Last"));
     }
 }
