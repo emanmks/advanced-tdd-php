@@ -9,7 +9,7 @@ class NameInverter {
         if (empty($name)) return "";
 
         $name = trim($name);
-        $name = explode(" ", $name);
+        $name = preg_split("/[\s,]+/", $name);
         if (count($name) === 1) return $name[0];
 
         return $name[1] . ", " . $name[0];

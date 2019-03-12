@@ -43,4 +43,9 @@ class NameInverterTest extends TestCase
     {
         $this->assertEquals("Name", $this->inverter->invert(" Name"));
     }
+
+    public function testGivenFirstLastWithExtraSpacesReturnLastFirst(): void
+    {
+        $this->assertEquals("Last, First", $this->inverter->invert("  First  Last"));
+    }
 }
