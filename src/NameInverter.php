@@ -11,16 +11,33 @@ class NameInverter {
         $trimmedName = trim($name);
         $splitName = preg_split("/[\s,]+/", $trimmedName);
         if (count($splitName) === 1) return $splitName[0];
+
         if ($this->isHonorific($splitName[0])) {
             unset($splitName[0]);
             $splitName = array_values($splitName);
         }
 
-        return $splitName[1] . ", " . $splitName[0];
+        $postNominal = '';
+        if (count($splitName) > 2) {
+            $postNominal = $this->getPostNominalFromSplitName($splitName);
+        }
+
+        return trim($splitName[1] . ", " . $splitName[0] . " " . $postNominal);
     }
 
     private function isHonorific(string $word): bool
     {
         return preg_match('/(Mr|Mrs|Ms)/', $word);
+    }
+
+    private function getPostNominalFromSplitName(array $splitName): string
+    {
+        $postNominalList = array_slice($splitName, 2);
+
+        $output = '';
+        foreach ($postNominalList as $word) {
+            $output .= $word . ' ';
+        }
+        return $output;
     }
 }
