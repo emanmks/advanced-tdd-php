@@ -8,6 +8,7 @@ class NameInverter {
     {
         if (empty($name)) return "";
 
+        $name = trim($name);
         $name = explode(" ", $name);
         if (count($name) === 1) return $name[0];
 

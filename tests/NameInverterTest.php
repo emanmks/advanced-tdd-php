@@ -38,4 +38,9 @@ class NameInverterTest extends TestCase
     {
         $this->assertEquals("Last, First", $this->inverter->invert("First Last"));
     }
+
+    public function testTrimTheNameBeforeProceed(): void
+    {
+        $this->assertEquals("Name", $this->inverter->invert(" Name"));
+    }
 }
