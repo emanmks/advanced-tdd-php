@@ -26,26 +26,31 @@ class NameInverterTest extends TestCase
 
     public function testGivenEmptyReturnEmptyString(): void
     {
-        $this->assertEquals("", $this->inverter->invert(""));
+        $this->assertInverted("", "");
     }
 
     public function testGivenOneWordNameReturnOneWordName(): void
     {
-        $this->assertEquals("Name", $this->inverter->invert("Name"));
+        $this->assertInverted("Name", "Name");
     }
 
     public function testGivenFirstLastReturnLastFirst(): void
     {
-        $this->assertEquals("Last, First", $this->inverter->invert("First Last"));
+        $this->assertInverted("First Last", "Last, First");
     }
 
     public function testTrimTheNameBeforeProceed(): void
     {
-        $this->assertEquals("Name", $this->inverter->invert(" Name"));
+        $this->assertInverted(" Name", "Name");
     }
 
     public function testGivenFirstLastWithExtraSpacesReturnLastFirst(): void
     {
-        $this->assertEquals("Last, First", $this->inverter->invert("  First  Last"));
+        $this->assertInverted("  First  Last", "Last, First");
+    }
+
+    private function assertInverted($actualName, $expectedName): void
+    {
+        $this->assertEquals($expectedName, $this->inverter->invert($actualName));
     }
 }
