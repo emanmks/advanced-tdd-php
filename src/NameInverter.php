@@ -8,10 +8,20 @@ class NameInverter {
     {
         if (empty($name)) return "";
 
-        $name = trim($name);
-        $name = preg_split("/[\s,]+/", $name);
-        if (count($name) === 1) return $name[0];
+        $trimmedName = trim($name);
+        $splitName = preg_split("/[\s,]+/", $trimmedName);
+        if (count($splitName) === 1) return $splitName[0];
+        if ($this->isHonorific($splitName[0])) {
+            unset($splitName[0]);
+            $splitName = array_values($splitName);
+        }
 
-        return $name[1] . ", " . $name[0];
+        return $splitName[1] . ", " . $splitName[0];
+    }
+
+    private function isHonorific(string $word): bool
+    {
+        $honorificIdentifier = ['Mr.', 'Mrs.', 'Ms.'];
+        return in_array($word, $honorificIdentifier);
     }
 }

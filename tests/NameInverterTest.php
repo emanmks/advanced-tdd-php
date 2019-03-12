@@ -49,6 +49,11 @@ class NameInverterTest extends TestCase
         $this->assertInverted("  First  Last", "Last, First");
     }
 
+    public function testIgnoreHonorificName(): void
+    {
+        $this->assertInverted("Mr. First Last", "Last, First");
+    }
+
     private function assertInverted($actualName, $expectedName): void
     {
         $this->assertEquals($expectedName, $this->inverter->invert($actualName));
