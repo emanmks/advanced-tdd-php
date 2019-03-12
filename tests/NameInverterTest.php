@@ -19,4 +19,10 @@ class NameInverterTest extends TestCase
         $inverter = new NameInverter();
         $this->assertEquals("", $inverter->invert(""));
     }
+
+    public function testGivenOneWordNameReturnOneWordName(): void
+    {
+        $inverter = new NameInverter();
+        $this->assertEquals("Fulan", $inverter->invert("Fulan"));
+    }
 }
