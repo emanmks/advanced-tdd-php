@@ -21,7 +21,6 @@ class NameInverter {
 
     private function isHonorific(string $word): bool
     {
-        $honorificIdentifier = ['Mr.', 'Mrs.', 'Ms.'];
-        return in_array($word, $honorificIdentifier);
+        return preg_match('/(Mr|Mrs|Ms)/', $word);
     }
 }
