@@ -7,3 +7,5 @@ composer.lock
 // .idea dir
 .idea/
 
+// phpunit result cache
+.phpunit.result.cache
