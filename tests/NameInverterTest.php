@@ -6,23 +6,31 @@ use App\NameInverter;
 
 class NameInverterTest extends TestCase
 {
+    /**
+     * @var NameInverter
+     */
+    private $inverter;
+
+    public function setUp(): void
+    {
+        $this->inverter = new NameInverter();
+        parent::setUp();
+    }
+
     public function testGivenNullThrowsAnException(): void
     {
         $this->expectException(TypeError::class);
 
-        $inverter = new NameInverter();
-        $inverter->invert(null);
+        $this->inverter->invert(null);
     }
 
     public function testGivenEmptyReturnEmptyString(): void
     {
-        $inverter = new NameInverter();
-        $this->assertEquals("", $inverter->invert(""));
+        $this->assertEquals("", $this->inverter->invert(""));
     }
 
     public function testGivenOneWordNameReturnOneWordName(): void
     {
-        $inverter = new NameInverter();
-        $this->assertEquals("Fulan", $inverter->invert("Fulan"));
+        $this->assertEquals("Fulan", $this->inverter->invert("Fulan"));
     }
 }
